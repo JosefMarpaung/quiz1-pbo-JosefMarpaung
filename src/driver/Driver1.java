@@ -1,10 +1,5 @@
-public class Driver1 {
-    
-}
 import java.util.ArrayList;
 import java.util.Scanner;
-
-
 
 class Pesanan {
     String namaMenu;
@@ -20,7 +15,7 @@ class Pesanan {
     }
 }
 
-public class WarungMakan {
+public class Driver1 {
 
     public static void main(String[] args) {
 
@@ -99,7 +94,6 @@ public class WarungMakan {
             daftarPesanan.add(new Pesanan(namaMenu, totalPorsi, harga, subtotal));
         }
 
-        // OUTPUT TABEL
         System.out.println("\n==============================================================");
         System.out.printf("%-25s %-10s %-10s %-10s\n", "Menu", "Porsi", "Harga", "Total");
         System.out.println("--------------------------------------------------------------");
@@ -116,4 +110,3 @@ public class WarungMakan {
         input.close();
     }
 }
-

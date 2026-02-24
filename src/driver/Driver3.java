@@ -1,104 +1,6 @@
+import java.util.*;  // import harus paling atas
+
 public class Driver3 {
-    
-}
-
-import java.util.*;
-
-// CUSTOMER 
-class Customer {
-    private int id;
-    private String nama;
-    private String noHp;
-
-    public Customer(int id, String nama, String noHp) {
-        this.id = id;
-        this.nama = nama;
-        this.noHp = noHp;
-    }
-
-    public int getId() { return id; }
-
-    public void display() {
-        System.out.println("ID: " + id + " | Nama: " + nama + " | HP: " + noHp);
-    }
-}
-
-// TRANSAKSI 
-class Transaksi {
-    private int id;
-    private int customerId;
-    private String jenis;
-    private double berat;
-
-    public Transaksi(int id, int customerId, String jenis, double berat) {
-        this.id = id;
-        this.customerId = customerId;
-        this.jenis = jenis;
-        this.berat = berat;
-    }
-
-    public int getId() { return id; }
-    public int getCustomerId() { return customerId; }
-
-    public void display() {
-        System.out.println("ID: " + id + 
-                " | Customer ID: " + customerId +
-                " | Jenis: " + jenis +
-                " | Berat: " + berat + " kg");
-    }
-}
-
-// KELUHAN 
-class Keluhan {
-    private int transaksiId;
-    private String deskripsi;
-
-    public Keluhan(int transaksiId, String deskripsi) {
-        this.transaksiId = transaksiId;
-        this.deskripsi = deskripsi;
-    }
-
-    public int getTransaksiId() { return transaksiId; }
-
-    public void display() {
-        System.out.println("Transaksi ID: " + transaksiId +
-                " | Keluhan: " + deskripsi);
-    }
-}
-
-// RATING
-class Rating {
-    private int transaksiId;
-    private int nilai;
-
-    public Rating(int transaksiId, int nilai) {
-        this.transaksiId = transaksiId;
-        this.nilai = nilai;
-    }
-
-    public int getTransaksiId() { return transaksiId; }
-    public int getNilai() { return nilai; }
-
-    public String getKeterangan() {
-        switch (nilai) {
-            case 1: return "Sangat Tidak Puas";
-            case 2: return "Tidak Puas";
-            case 3: return "Cukup";
-            case 4: return "Puas";
-            case 5: return "Sangat Puas";
-            default: return "-";
-        }
-    }
-
-    public void display() {
-        System.out.println("Transaksi ID: " + transaksiId +
-                " | Rating: " + nilai +
-                " (" + getKeterangan() + ")");
-    }
-}
-
-// MAIN 
-public class Main {
 
     static Scanner input = new Scanner(System.in);
 
@@ -235,7 +137,7 @@ public class Main {
         }
     }
 
-    //HELPER METHODS
+    // HELPER METHODS
     static Customer cariCustomer(int id) {
         return customers.stream()
                 .filter(c -> c.getId() == id)
@@ -265,5 +167,98 @@ public class Main {
                 .mapToInt(Rating::getNilai)
                 .average()
                 .orElse(0.0);
+    }
+}
+
+// CUSTOMER
+class Customer {
+    private int id;
+    private String nama;
+    private String noHp;
+
+    public Customer(int id, String nama, String noHp) {
+        this.id = id;
+        this.nama = nama;
+        this.noHp = noHp;
+    }
+
+    public int getId() { return id; }
+
+    public void display() {
+        System.out.println("ID: " + id + " | Nama: " + nama + " | HP: " + noHp);
+    }
+}
+
+// TRANSAKSI
+class Transaksi {
+    private int id;
+    private int customerId;
+    private String jenis;
+    private double berat;
+
+    public Transaksi(int id, int customerId, String jenis, double berat) {
+        this.id = id;
+        this.customerId = customerId;
+        this.jenis = jenis;
+        this.berat = berat;
+    }
+
+    public int getId() { return id; }
+    public int getCustomerId() { return customerId; }
+
+    public void display() {
+        System.out.println("ID: " + id +
+                " | Customer ID: " + customerId +
+                " | Jenis: " + jenis +
+                " | Berat: " + berat + " kg");
+    }
+}
+
+// KELUHAN
+class Keluhan {
+    private int transaksiId;
+    private String deskripsi;
+
+    public Keluhan(int transaksiId, String deskripsi) {
+        this.transaksiId = transaksiId;
+        this.deskripsi = deskripsi;
+    }
+
+    public int getTransaksiId() { return transaksiId; }
+
+    public void display() {
+        System.out.println("Transaksi ID: " + transaksiId +
+                " | Keluhan: " + deskripsi);
+    }
+}
+
+// RATING
+class Rating {
+    private int transaksiId;
+    private int nilai;
+
+    public Rating(int transaksiId, int nilai) {
+        this.transaksiId = transaksiId;
+        this.nilai = nilai;
+    }
+
+    public int getTransaksiId() { return transaksiId; }
+    public int getNilai() { return nilai; }
+
+    public String getKeterangan() {
+        switch (nilai) {
+            case 1: return "Sangat Tidak Puas";
+            case 2: return "Tidak Puas";
+            case 3: return "Cukup";
+            case 4: return "Puas";
+            case 5: return "Sangat Puas";
+            default: return "-";
+        }
+    }
+
+    public void display() {
+        System.out.println("Transaksi ID: " + transaksiId +
+                " | Rating: " + nilai +
+                " (" + getKeterangan() + ")");
     }
 }
